@@ -29,9 +29,9 @@ export const fetchSmurfs = () => dispatch => {
       dispatch({ type: FAILED_TO_SMURF, payload: err }))
 }
 
-export const addSmurf = smurf => {
+export function addSmurf(newSmurf){
   return {
     type: 'ADD_SMURF',
-    payload: smurf
+    payload: newSmurf
   }
 }

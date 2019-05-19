@@ -13,7 +13,7 @@ class App extends Component {
 
   state = {
     smurfs: [],
-    newSmurf: {}
+    newSmurf: ""
   }
 
   componentDidMount(props) {
@@ -22,11 +22,7 @@ class App extends Component {
   }
 
   handleChanges = e => {
-    this.setState({ newSmurf: {
-      name: this.state.newSmurf.name,
-      age: this.state.newSmurf.age,
-      height: this.state.newSmurf.height
-    } });
+    this.setState();
   };
 
   handleButtonClick = e => {
@@ -39,7 +35,8 @@ class App extends Component {
 
   render() {
     if (this.props.fetchingSmurfs) {
-      return ("Fetching data...")
+      return ("Fetching data...");
+      setTimeout(()=> {}, 3000)
     }
     return (
       <div>
@@ -49,21 +46,24 @@ class App extends Component {
           <p> Smurf name:  
           <input
             type="text"
-            value={this.state.newSmurf.name}
+            name="name"
+            value={this.state.name}  
             onChange={this.handleChanges}
             placeholder="Smurf a new smurf's name!" />
           </p>
           <p> Smurf Age:  
           <input
             type="text"
-            value={this.state.newSmurf.age}
+            name="age"
+            value={this.state.age}
             onChange={this.handleChanges}
             placeholder="How old in smurf years?" />
           </p>
           <p> Smurf height:  
           <input
             type="text"
-            value={this.state.newSmurf.height}
+            name="height"
+            value={this.state.height}
             onChange={this.handleChanges}
             placeholder="How tall is the new smurf?" />
           </p>

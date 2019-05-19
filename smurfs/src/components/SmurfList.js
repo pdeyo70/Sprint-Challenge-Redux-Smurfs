@@ -5,8 +5,8 @@ import Smurf from "./Smurf";
 const SmurfList = props => {
     return (
         <ul>
-            {props.smurfs.map(smurf => {
-                return <Smurf key={smurf.name} smurf={smurf} />;
+            {props.smurfs.map((smurf, id) => {
+                return <Smurf key={id} smurf={smurf} />;
             })}
         </ul>
     );
