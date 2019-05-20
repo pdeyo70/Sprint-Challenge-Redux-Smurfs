@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetchSmurfs, addSmurf } from '../actions';
 import SmurfList from './SmurfList';
+
 /*
   to wire this component up you're going to need a few things.
   I'll let you do this part on your own. 
@@ -13,7 +14,11 @@ class App extends Component {
 
   state = {
     smurfs: [],
-    newSmurf: ""
+    newSmurf: {
+      name: "",
+      age: "",
+      height: ""
+    }
   }
 
   componentDidMount(props) {
@@ -22,11 +27,18 @@ class App extends Component {
   }
 
   handleChanges = e => {
-    this.setState();
-  };
+    this.setState({
+      newSmurf: {
+      ...this.state.newSmurf,
+      [e.target.name]: e.target.value,
+      }
+    })
+  }
+
 
   handleButtonClick = e => {
     e.preventDefault();
+    console.log(this.state.newSmurf);
     this.props.addSmurf(this.state.newSmurf);
     this.setState({
       newSmurf: ""
@@ -36,36 +48,35 @@ class App extends Component {
   render() {
     if (this.props.fetchingSmurfs) {
       return ("Fetching data...");
-      setTimeout(()=> {}, 3000)
     }
     return (
       <div>
         <SmurfList smurfs={this.props.smurfs} />
-        
+
         <form onSubmit={this.handleButtonClick}>
-          <p> Smurf name:  
+          <p> Smurf name:
           <input
-            type="text"
-            name="name"
-            value={this.state.name}  
-            onChange={this.handleChanges}
-            placeholder="Smurf a new smurf's name!" />
+              type="text"
+              name="name"
+              value={this.state.newSmurf.name}
+              onChange={this.handleChanges}
+              placeholder="Smurf a new smurf's name!" />
           </p>
-          <p> Smurf Age:  
+          <p> Smurf Age:
           <input
-            type="text"
-            name="age"
-            value={this.state.age}
-            onChange={this.handleChanges}
-            placeholder="How old in smurf years?" />
+              type="text"
+              name="age"
+              value={this.state.newSmurf.age}
+              onChange={this.handleChanges}
+              placeholder="How old in smurf years?" />
           </p>
-          <p> Smurf height:  
+          <p> Smurf height:
           <input
-            type="text"
-            name="height"
-            value={this.state.height}
-            onChange={this.handleChanges}
-            placeholder="How tall is the new smurf?" />
+              type="text"
+              name="height"
+              value={this.state.newSmurf.height}
+              onChange={this.handleChanges}
+              placeholder="How tall is the new smurf?" />
           </p>
         </form>
         <button onClick={this.handleButtonClick} type="submit">Smurf a smurf!</button>

@@ -13,8 +13,7 @@ const initialState = {
   smurf: {
     name: '',
     age: '',
-    height: '',
-    id: ''
+    height: ''
   },
   fetchingSmurfs: false,
   addingSmurf: false,
@@ -48,10 +47,11 @@ export const rootReducer = (state = initialState, action) => {
         error: ''
       }
     case ADD_SMURF:
+      console.log(action.payload);
       const newSmurf = {
-        name: action.payload,
-        age: action.payload,
-        height: action.payload
+        name: action.payload.name,
+        age: action.payload.age,
+        height: action.payload.height
       }
       return {
         ...state,
