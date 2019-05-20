@@ -15,7 +15,10 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
+      <div>
+      <h1>SMURFS!</h1>
     <App />
+    </div>
   </Provider>,
   document.getElementById('root')
 );

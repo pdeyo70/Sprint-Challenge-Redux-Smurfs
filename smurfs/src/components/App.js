@@ -23,7 +23,6 @@ class App extends Component {
 
   componentDidMount(props) {
     this.props.fetchSmurfs();
-    console.log(props);
   }
 
   handleChanges = e => {
@@ -51,6 +50,7 @@ class App extends Component {
     }
     return (
       <div>
+        
         <SmurfList smurfs={this.props.smurfs} />
 
         <form onSubmit={this.handleButtonClick}>
