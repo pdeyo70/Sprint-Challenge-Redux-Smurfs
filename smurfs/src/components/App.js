@@ -40,7 +40,11 @@ class App extends Component {
     console.log(this.state.newSmurf);
     this.props.addSmurf(this.state.newSmurf);
     this.setState({
-      newSmurf: ""
+      newSmurf: {
+        name: "",
+        age: "",
+        height: ""
+      }
     })
   };
 
