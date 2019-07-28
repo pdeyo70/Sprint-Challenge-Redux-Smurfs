@@ -14,7 +14,7 @@ const sendUserError = (msg, res) => {
 
 let smurfs = [
   {
-    name: 'Brainey',
+    name: 'Brainy', //correct this, it really bugged me
     age: 200,
     height: '5cm',
     id: 0
